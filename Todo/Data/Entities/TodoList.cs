@@ -1,10 +1,12 @@
 ﻿using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using Microsoft.AspNetCore.Identity;
 
 namespace Todo.Data.Entities
 {
     public class TodoList
     {
+        [Key]
         public int TodoListId { get; set; }
         public string Title { get; set; }
         public IdentityUser Owner { get; set; }
