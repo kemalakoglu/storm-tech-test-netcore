@@ -30,5 +30,6 @@ All notable changes to this project will be documented in this file.
 	delete mode 100644 Todo/Data/Migrations/ApplicationDbContextModelSnapshot.cs
 	
 ## [1.0.2] - 04-12-2023 00:53 AM CET
+
 ### Changed
 	modified:   Todo/Views/TodoList/Detail.cshtml
