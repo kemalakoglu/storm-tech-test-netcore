@@ -1,8 +1,10 @@
 ﻿using Microsoft.AspNetCore.Identity;
+using System.ComponentModel.DataAnnotations;
 
 namespace Todo.Data.Entities {
     public class TodoItem
     {
+        [Key]
         public int TodoItemId { get; set; }
         public string Title { get; set; }
         public string ResponsiblePartyId { get; set; }

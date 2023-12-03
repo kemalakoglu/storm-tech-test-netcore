@@ -21,6 +21,7 @@ namespace Todo.Data
 
             modelBuilder.Entity<TodoList>(entity =>
             {
+                entity.Property(e => e.TodoListId).UseIdentityColumn().HasAnnotation("SqlServer:Identity", "1, 1");
                 entity.Property(e => e.Title).IsRequired();
             });
 
@@ -29,6 +30,7 @@ namespace Todo.Data
                 entity.HasOne(d => d.TodoList)
                     .WithMany(p => p.Items)
                     .HasForeignKey(d => d.TodoListId);
+                entity.Property(e => e.TodoItemId).UseIdentityColumn().HasAnnotation("SqlServer:Identity", "1, 1");
             });
         }
     }
