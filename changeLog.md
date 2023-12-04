@@ -46,3 +46,25 @@ All notable changes to this project will be documented in this file.
 
 ### Changed
 	modified:   Todo/Services/ApplicationDbContextConvenience.cs
+	
+## [1.0.5] - 04-12-2023 09:04 AM CET
+
+### Added
+		create mode 100644 Todo/Migrations/20231204065354_ToDo-Item-Range.Designer.cs
+		create mode 100644 Todo/Migrations/20231204065354_ToDo-Item-Range.cs
+		create mode 100644 Todo/Migrations/20231204074018_ToDo-Item-Rank.Designer.cs
+		create mode 100644 Todo/Migrations/20231204074018_ToDo-Item-Rank.cs
+		create mode 100644 Todo/Migrations/20231204075751_ToDo-Item-Rank-Type-Changed.Designer.cs
+		create mode 100644 Todo/Migrations/20231204075751_ToDo-Item-Rank-Type-Changed.cs
+	
+### Changed	
+	    modified:   Todo.Tests/TestTodoListBuilder.cs
+        modified:   Todo.Tests/WhenTodoItemIsConvertedToEditFields.cs
+        modified:   Todo/Controllers/TodoItemController.cs
+        modified:   Todo/Data/Entities/TodoItem.cs
+        modified:   Todo/EntityModelMappers/TodoItems/TodoItemEditFieldsFactory.cs
+        modified:   Todo/Migrations/ApplicationDbContextModelSnapshot.cs
+        modified:   Todo/Models/TodoItems/TodoItemCreateFields.cs
+        modified:   Todo/Models/TodoItems/TodoItemEditFields.cs
+        modified:   Todo/Views/TodoItem/Create.cshtml
+        modified:   Todo/Views/TodoItem/Edit.cshtml
