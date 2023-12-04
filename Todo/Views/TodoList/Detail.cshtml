@@ -14,16 +14,30 @@
     <ul id="todoItems" class="list-group">
 
         <li class="list-group-item">
-            <a asp-action="Create" asp-controller="TodoItem" asp-route-todoListId="@Model.TodoListId">
-                <strong>Add New Item</strong>
-            </a>
-        </li>
+            <div class="container">
+                <div class="row">
+                    <div id="addNewItemContainer" class="col-md-2">
+                        <a asp-action="Create" asp-controller="TodoItem" asp-route-todoListId="@Model.TodoListId">
+                            <strong>Add New Item</strong>
+                        </a>
+                    </div>
+                    <div id="todoItemContainer" class="col-md-2">
+                        <input class="form-check-input" type="checkbox" value="" id="orderByRank">
+                        <label class="form-check-label" for="orderByRank">
+                            Order by Rank
+                        </label>
+                    </div>
 
-        <li class="list-group-item">
-            <input class="form-check-input" type="checkbox" value="" id="orderByRank">
-            <label class="form-check-label" for="orderByRank">
-                Order by rank
-            </label>
+                    <div id="hideItemContainer" class="col-md-2">
+                        <input class="form-check-input" type="checkbox" value="" id="hideDoneItems">
+                        <label class="form-check-label" for="hideDoneItems">
+                            Hide Done Items
+                        </label>
+                    </div>
+                </div>
+            </div>
+
+
         </li>
 
         @foreach (var item in Model.Items.OrderBy(x => x.Importance))
@@ -82,18 +96,34 @@
 </div>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <script type="text/javascript">
-    const model = (@Json.Serialize(Model.Items)).sort((item1,item2) => item1.importance - item2.importance);
+    const model = @Json.Serialize(Model.Items.OrderBy(y=>y.Importance));
+    const hidingItemsModel = (@Json.Serialize(Model.Items.Where(x=>x.IsDone == true)));
     const orderedItems = (@Json.Serialize(Model.Items)).sort((item1,item2) => item2.rank - item1.rank);
 
     $(document).ready(function() {
-
+        let ulElem = document.getElementById("todoItems");
         $('#orderByRank').on('change', function() {
-         let ulElem = document.getElementById("todoItems");
          if(this.checked) {
                orderedItems.forEach((item) => ulElem.appendChild(document.getElementById("todoItem-" + item.todoItemId)));
          }
          else{
                model.forEach((item) => ulElem.appendChild(document.getElementById("todoItem-" + item.todoItemId)));
+         }
+         });
+
+         $('#hideDoneItems').on('change', function() {
+         if(this.checked) {
+             for(let i = 0; i < hidingItemsModel.length; ++i){
+                    let elem = document.getElementById("todoItem-" + hidingItemsModel[i].todoItemId);
+                    elem.style.display = 'none';
+            }
+         }
+         else{
+
+      for(let i = 0; i < hidingItemsModel.length; ++i){
+                    let elem = document.getElementById("todoItem-" + hidingItemsModel[i].todoItemId);
+                    elem.style.display = 'block';
+            }
          }
          });
      });

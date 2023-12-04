@@ -7,7 +7,7 @@ namespace Todo.Models.TodoItems
         public int TodoItemId { get; }
         public string Title { get; }
         public UserSummaryViewmodel ResponsibleParty { get; }
-        public bool IsDone { get; }
+        public bool IsDone { get; set; }
         public int Rank { get; }
         public Importance Importance { get; }
 
