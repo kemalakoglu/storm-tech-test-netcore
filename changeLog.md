@@ -68,3 +68,9 @@ All notable changes to this project will be documented in this file.
         modified:   Todo/Models/TodoItems/TodoItemEditFields.cs
         modified:   Todo/Views/TodoItem/Create.cshtml
         modified:   Todo/Views/TodoItem/Edit.cshtml
+		
+## [1.0.6] - 04-12-2023 11:16 AM CET
+		
+### Changed		
+		modified:   Todo/Views/TodoList/Detail.cshtml
+		
