@@ -29,7 +29,14 @@ All notable changes to this project will be documented in this file.
 	delete mode 100644 Todo/Data/Migrations/20181018104158_CreateTodoEntities.cs
 	delete mode 100644 Todo/Data/Migrations/ApplicationDbContextModelSnapshot.cs
 	
+	
 ## [1.0.2] - 04-12-2023 00:53 AM CET
 
 ### Changed
 	modified:   Todo/Views/TodoList/Detail.cshtml
+	
+	
+## [1.0.3] - 04-12-2023 01:11 AM CET
+
+### Changed
+	modified:   Todo/Models/TodoItems/TodoItemEditFields.cs
