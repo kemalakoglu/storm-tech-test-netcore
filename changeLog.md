@@ -81,3 +81,10 @@ All notable changes to this project will be documented in this file.
 ### Changed		
 		modified:   Todo/Views/TodoList/Detail.cshtml
 		
+		
+## [1.0.8] - 04-12-2023 14:12 PM CET
+		
+### Changed		
+		modified:   Todo/Views/TodoItem/Create.cshtml
+        modified:   Todo/Views/TodoItem/Edit.cshtml
+		
