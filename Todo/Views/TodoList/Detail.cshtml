@@ -9,9 +9,9 @@
 
 <h2>@ViewData["Title"]</h2>
 
-<div class="col-md-6">
+<div id="todoItemContainer" class="col-md-6">
 
-    <ul class="list-group">
+    <ul id="todoItems" class="list-group">
 
         <li class="list-group-item">
             <a asp-action="Create" asp-controller="TodoItem" asp-route-todoListId="@Model.TodoListId">
@@ -19,7 +19,14 @@
             </a>
         </li>
 
-        @foreach (var item in Model.Items.OrderBy(x=>x.Importance))
+        <li class="list-group-item">
+            <input class="form-check-input" type="checkbox" value="" id="orderByRank">
+            <label class="form-check-label" for="orderByRank">
+                Order by rank
+            </label>
+        </li>
+
+        @foreach (var item in Model.Items.OrderBy(x => x.Importance))
         {
             string contextualClass;
             switch (item.Importance)
@@ -35,35 +42,60 @@
                     break;
             }
 
-            <li class="list-group-item @contextualClass">
-                
+            <li id="todoItem-@item.TodoItemId" class="list-group-item @contextualClass">
+
                 <div class="row">
 
-                <div class="col-md-8">
-                    <a asp-action="Edit" asp-controller="TodoItem" asp-route-todoItemId="@item.TodoItemId">
+                    <div class="col-md-8">
+                        <a asp-action="Edit" asp-controller="TodoItem" asp-route-todoItemId="@item.TodoItemId">
 
-                        @if (item.IsDone)
-                        {
-                            <s>@item.Title</s>
-                        }
-                        else
-                        {
-                            <text>@item.Title</text>
-                        }
-                    </a>
-                </div>
+                            @if (item.IsDone)
+                            {
+                                <s>@item.Title</s>
+                            }
+                            else
+                            {
+                                <text>@item.Title</text>
+                            }
+                        </a>
+                    </div>
 
-                <div class="col-md-4 text-right">
-                    <small>
-                        @item.ResponsibleParty.UserName
+                    <div class="col-md-2">
+                        <small id="itemRank-@item.TodoItemId">
+                            <text>Rank: @item.Rank</text>
+                        </small>
+                    </div>
 
-                        <img src="https://www.gravatar.com/avatar/@Gravatar.GetHash(item.ResponsibleParty.Email)?s=30"/>
+                    <div class="col-md-4 text-right">
+                        <small>
+                            @item.ResponsibleParty.UserName
 
-                    </small>
-                </div>
+                            <img src="https://www.gravatar.com/avatar/@Gravatar.GetHash(item.ResponsibleParty.Email)?s=30" />
+
+                        </small>
+                    </div>
                 </div>
 
             </li>
         }
     </ul>
 </div>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script type="text/javascript">
+    const model = (@Json.Serialize(Model.Items)).sort((item1,item2) => item1.importance - item2.importance);
+    const orderedItems = (@Json.Serialize(Model.Items)).sort((item1,item2) => item2.rank - item1.rank);
+
+    $(document).ready(function() {
+
+        $('#orderByRank').on('change', function() {
+         let ulElem = document.getElementById("todoItems");
+         if(this.checked) {
+               orderedItems.forEach((item) => ulElem.appendChild(document.getElementById("todoItem-" + item.todoItemId)));
+         }
+         else{
+               model.forEach((item) => ulElem.appendChild(document.getElementById("todoItem-" + item.todoItemId)));
+         }
+         });
+     });
+
+</script>
