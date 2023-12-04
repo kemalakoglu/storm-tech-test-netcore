@@ -13,48 +13,48 @@
 
 <h2>@ViewData["Title"]</h2>
 
-<div class="col-md-4">
+<div class="form">
     <section>
         <form method="post">
 
             @Html.AntiForgeryToken()
 
             @Html.HiddenFor(m => m.TodoListTitle)
-
-            <div class="form-group">
+            <div class="form-group mb-3">
                 <label asp-for="Title"></label>
-                <input asp-for="Title" class="form-control" />
+                <input asp-for="Title" class="form-control" type="text" placeholder="Title" aria-label="Title" aria-describedby="basic-addon1"/>
                 <span asp-validation-for="Title" class="text-danger"></span>
             </div>
 
-
-            <div class="form-group">
+            <div class="form-group mb-3">
                 <label asp-for="Importance"></label>
                 @Html.DropDownListFor(
-                    m => m.Importance,
-                    SelectListConvenience.ImportanceSelectListItems,
-                    new {@class="form-control"}
-                    )
+                m => m.Importance,
+                SelectListConvenience.ImportanceSelectListItems,
+                new {@class="form-control",
+                @placeholder="Importance"}
+                )
                 <span asp-validation-for="Importance" class="text-danger"></span>
             </div>
 
-           <div class="form-group">
+            <div class="form-group mb-3">
                 <label asp-for="Rank"></label>
-                <input asp-for="Rank" class="form-control" value = "0" type="number" max=5/>
+                <input asp-for="Rank" class="form-control" value="0" type="number" max=5 placeholder="Rank" aria-label="Rank" aria-describedby="basic-addon1"/>
                 <span asp-validation-for="Rank" class="text-danger"></span>
             </div>
 
-            <div class="form-group">
+            <div class="form-group mb-3">
                 <label asp-for="ResponsiblePartyId"></label>
                 @Html.DropDownListFor(
-                    m => m.ResponsiblePartyId,
-                    dbContext.UserSelectListItems(),
-                    new {@class="form-control"}
-                    )
+                m => m.ResponsiblePartyId,
+                dbContext.UserSelectListItems(),
+                new {@class="form-control",
+                @placeholder="Importance"}
+                )
                 <span asp-validation-for="ResponsiblePartyId" class="text-danger"></span>
             </div>
 
-            <div class="form-group">
+            <div class="input-group mb-3">
                 <button type="submit" class="btn btn-default">Save</button>
             </div>
 

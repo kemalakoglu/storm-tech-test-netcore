@@ -13,7 +13,7 @@
 
 <h2>@ViewData["Title"]</h2>
 
-<div class="col-md-4">
+<div class="form">
     <section>
         <form method="post">
 
@@ -23,14 +23,14 @@
             @Html.HiddenFor(m => m.TodoListId)
             @Html.HiddenFor(m => m.TodoListTitle)
 
-            <div class="form-group">
+            <div class="form-group mb-3">
                 <label asp-for="Title"></label>
-                <input asp-for="Title" class="form-control" />
+                <input asp-for="Title" class="form-control" placeholder="Title" aria-label="Title" aria-describedby="basic-addon1"/>
                 <span asp-validation-for="Title" class="text-danger"></span>
             </div>
 
 
-            <div class="form-group">
+            <div class="form-group mb-3">
                 <label asp-for="Importance"></label>
                 @Html.DropDownListFor(
                 m => m.Importance,
@@ -46,13 +46,13 @@
                 </label>
             </div>
 
-            <div class="form-group">
+            <div class="form-group mb-3">
                 <label asp-for="Rank"></label>
                 <input asp-for="Rank" class="form-control" type="number" max=5/>
                 <span asp-validation-for="Rank" class="text-danger"></span>
             </div>
 
-            <div class="form-group">
+            <div class="form-group mb-3">
                 <label asp-for="ResponsiblePartyId"></label>
                 @Html.DropDownListFor(
                 m => m.ResponsiblePartyId,
