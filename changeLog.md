@@ -40,3 +40,9 @@ All notable changes to this project will be documented in this file.
 
 ### Changed
 	modified:   Todo/Models/TodoItems/TodoItemEditFields.cs
+	
+	
+## [1.0.4] - 04-12-2023 07:47 AM CET
+
+### Changed
+	modified:   Todo/Services/ApplicationDbContextConvenience.cs
